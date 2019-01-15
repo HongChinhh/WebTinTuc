@@ -21,6 +21,7 @@ namespace WebsiteAdmission.Controllers
             var feedbacks = db.Feedbacks
                 .Include(f => f.User)
                 .Where(s => s.User.UserName.Contains(search)
+                || s.Title.Contains(search)
                 || s.Content.Contains(search)
                 || s.Post_PostID.ToString().Contains(search))
                 .OrderBy(s => s.FeedbackID);
@@ -45,7 +46,8 @@ namespace WebsiteAdmission.Controllers
         // GET: Feedbacks/Create
         public ActionResult Create()
         {
-            ViewBag.User_UserID = new SelectList(db.Users, "UserID", "UserName");
+            ViewBag.Post_PostID = new SelectList(db.SubCategories.Where(s => s.ViewName == "_TuVan_ViewTrai")
+                                    .First().Posts, "PostID", "Title");
             return View();
         }
 
@@ -54,10 +56,11 @@ namespace WebsiteAdmission.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FeedbackID,Content,User_UserID,Post_PostID")] Feedback feedback)
+        public ActionResult Create([Bind(Include = "FeedbackID,Title,Content,Post_PostID")] Feedback feedback)
         {
             if (ModelState.IsValid)
             {
+                feedback.User_UserID = int.Parse(Session["user_id"].ToString());
                 db.Feedbacks.Add(feedback);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,7 +82,8 @@ namespace WebsiteAdmission.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.User_UserID = new SelectList(db.Users, "UserID", "UserName", feedback.User_UserID);
+            ViewBag.Post_PostID = new SelectList(db.SubCategories.Where(s => s.ViewName == "_TuVan_ViewTrai")
+                                    .First().Posts, "PostID", "Title");
             return View(feedback);
         }
 
@@ -88,7 +92,7 @@ namespace WebsiteAdmission.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FeedbackID,Content,User_UserID,Post_PostID")] Feedback feedback)
+        public ActionResult Edit([Bind(Include = "FeedbackID,Title,Content,User_UserID,Post_PostID")] Feedback feedback)
         {
             if (ModelState.IsValid)
             {

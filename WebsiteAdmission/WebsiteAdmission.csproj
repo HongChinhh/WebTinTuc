@@ -406,7 +406,7 @@
     <Content Include="Views\Account\Signup.cshtml" />
     <Content Include="Views\Shared\SubTemplate\_Khoa_DaoTao.cshtml" />
     <Content Include="Views\Shared\SubTemplate\_TuVan_ViewTrai.cshtml" />
-    <Content Include="Views\Shared\SubTemplate\_TuVan_ViewPhai.cshtml" />
+    <Content Include="Views\Page\_TuVan_ViewPhai.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Articles\Detail.cshtml" />
     <Content Include="Views\Footers\Create.cshtml" />

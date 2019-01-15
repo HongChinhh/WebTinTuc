@@ -13,11 +13,17 @@ namespace WebsiteAdmission.Models
 
         [Required]
         [StringLength(250)]
+        public string Title { get; set; }
+
+        [Required]
+        [StringLength(250)]
         public string Content { get; set; }
 
         public int User_UserID { get; set; }
 
         public int Post_PostID { get; set; }
+
+        public virtual Post Post { get; set; }
 
         public virtual User User { get; set; }
     }

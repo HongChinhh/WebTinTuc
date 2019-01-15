@@ -9,6 +9,12 @@ namespace WebsiteAdmission.Models
     [Table("Post")]
     public partial class Post
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Post()
+        {
+            Feedbacks = new HashSet<Feedback>();
+        }
+
         public int PostID { get; set; }
 
         [Required]
@@ -34,6 +40,9 @@ namespace WebsiteAdmission.Models
         public int User_UserID { get; set; }
 
         public int SubCategory_SubCategoryID { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
 
         public virtual SubCategory SubCategory { get; set; }
 

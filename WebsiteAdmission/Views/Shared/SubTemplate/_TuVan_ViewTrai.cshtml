@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+<link rel="stylesheet" href="~/Content/styles/tuvan.css" type="text/css" />
 <div class="row3-left">
     <div class="phanloaicauhoi">
         <div class="title_phanloai">
@@ -6,12 +7,41 @@
         </div>
         <div class="button_phanloai">
             @{ int i = 1;}
-            @foreach (var item in Model)
+            @foreach (var item in Model.OrderBy(s => s.PublishedTime))
             {
-                <a href="@Url.Action("Detail", "Page", new { id = item.PostID })" 
-                   class="button @(Model.Count() == i ? "red" : "")">@item.Title</a>
+                <a href="@Url.Action("Feedback", "Page", new { postID = item.PostID, postTitle = item.Title })"
+                   class="btn_phanloaicauhoi button @(i == 1 ? "red" : "")">@item.Title</a>
                 i++;
             }
         </div>
     </div>
 </div>
+<div id="cauhoiphobien">
+
+</div>
+<script>
+    // init ajax right
+    $(document).ready(function () {
+        var $firstItem = $('.btn_phanloaicauhoi').eq(0);
+        var url = $firstItem.prop('href');
+        $.ajax({
+            url: url,
+            success: function (data) {
+                $('#cauhoiphobien').html(data);
+            },
+        });
+    });
+    // /init ajax right
+    $('.btn_phanloaicauhoi').click(function (e) {
+        e.preventDefault();
+        $('.btn_phanloaicauhoi').removeClass('red');
+        $(this).addClass('red');
+        var url = $(this).prop('href');
+        $.ajax({
+            url: url,
+            success: function (data) {
+                $('#cauhoiphobien').html(data);
+            },
+        });
+    });
+</script>

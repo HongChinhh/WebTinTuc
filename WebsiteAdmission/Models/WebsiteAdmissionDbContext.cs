@@ -1,6 +1,9 @@
 namespace WebsiteAdmission.Models
 {
+    using System;
     using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
 
     public partial class WebsiteAdmissionDbContext : DbContext
     {
@@ -10,12 +13,12 @@ namespace WebsiteAdmission.Models
         }
 
         public virtual DbSet<Feedback> Feedbacks { get; set; }
+        public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<ParentCategory> ParentCategories { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Privilege> Privileges { get; set; }
         public virtual DbSet<SlideImage> SlideImages { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
-        public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,6 +35,12 @@ namespace WebsiteAdmission.Models
             modelBuilder.Entity<Post>()
                 .Property(e => e.CoverImage)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Post>()
+                .HasMany(e => e.Feedbacks)
+                .WithRequired(e => e.Post)
+                .HasForeignKey(e => e.Post_PostID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Privilege>()
                 .HasMany(e => e.Users)
