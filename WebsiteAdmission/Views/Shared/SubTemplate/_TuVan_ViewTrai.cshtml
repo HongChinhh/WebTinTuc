@@ -1,23 +1,25 @@
 ﻿@model IEnumerable<WebsiteAdmission.Models.Post>
 <link rel="stylesheet" href="~/Content/styles/tuvan.css" type="text/css" />
-<div class="row3-left">
-    <div class="phanloaicauhoi">
-        <div class="title_phanloai">
-            <p>@Model.First().SubCategory.Name</p>
-        </div>
-        <div class="button_phanloai">
-            @{ int i = 1;}
-            @foreach (var item in Model.OrderBy(s => s.PublishedTime))
-            {
-                <a href="@Url.Action("Feedback", "Page", new { postID = item.PostID, postTitle = item.Title })"
-                   class="btn_phanloaicauhoi button @(i == 1 ? "red" : "")">@item.Title</a>
-                i++;
-            }
+<div class="row3">
+    <div class="row3-left">
+        <div class="phanloaicauhoi">
+            <div class="title_phanloai">
+                <p>@Model.First().SubCategory.Name</p>
+            </div>
+            <div class="button_phanloai">
+                @{ int i = 1;}
+                @foreach (var item in Model.OrderBy(s => s.PublishedTime))
+                {
+                    <a href="@Url.Action("Feedback", "Page", new { postID = item.PostID, postTitle = item.Title })"
+                       class="btn_phanloaicauhoi button @(i == 1 ? "red" : "")">@item.Title</a>
+                    i++;
+                }
+            </div>
         </div>
     </div>
-</div>
-<div id="cauhoiphobien">
+    <div id="cauhoiphobien">
 
+    </div>
 </div>
 <script>
     // init ajax right
