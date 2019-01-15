@@ -43,6 +43,9 @@ namespace WebsiteAdmission
             // admin
             bundles.Add(new ScriptBundle("~/Scripts/js/change-position").Include(
                   "~/Scripts/js/change-position.js"));
+
+            bundles.Add(new ScriptBundle("~/Content/styles/nhungdieukhacbiet").Include(
+                "~/Content/styles/nhungdieukhacbiet.css"));
         }
     }
 }

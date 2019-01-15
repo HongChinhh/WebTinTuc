@@ -1,12 +1,49 @@
-﻿@model WebsiteAdmission.Models.Post
+﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+@using WebsiteAdmission.Common
 @{
     Layout = "~/Views/Shared/_ClientLayout.cshtml";
 }
-<div class="detail_container">
+@section css {
+    @Styles.Render("~/Content/styles/nhungdieukhacbiet")
+}
+<div class="row3">
     <div class="content_post">
-        <h3>@Model.Title</h3>
+        <h3>@Model.Where(s => s.PostID == ViewBag.PostID).First().Title</h3>
         <p>
-            @Html.Raw(Model.Body)
+            @Html.Raw(Model.Where(s => s.PostID == ViewBag.PostID).First().Body)
         </p>
+    </div>
+    <div class="tin-moi">
+        <div class="title-tin-moi">
+            <p>TIN MỚI</p>
+        </div>
+        <div class="line-tin-moi"></div>
+        <div class="content-tin-moi">
+            @{ int i = 0;}
+            @foreach (var item in Model)
+            {
+                if (i++ == 5)
+                {
+                    break;
+                }
+                if (item.PostID == ViewBag.PostID)
+                {
+                    continue;
+                }
+                <div class="tin">
+                    <a href="@Url.Action("Detail", "Page", new { id = item.PostID })" class="clear_a">
+                        <img src="@(Constants.ImagesPosts.GetDescription() + item.PostID + '/' + item.CoverImage)" alt="No Image">
+                        <div class="title-tin">
+                            <p>
+                                <b>
+                                    @item.Title
+                                </b>
+                            </p>
+                            <p>@item.PublishedTime</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
     </div>
 </div>

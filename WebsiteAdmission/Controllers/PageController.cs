@@ -27,7 +27,11 @@ namespace WebsiteAdmission.Controllers
         {
             ViewBag.ParentCategories = db.ParentCategories.OrderBy(s => s.Position).ToList();
             var post = db.Posts.Where(s => s.PostID == id).FirstOrDefault();
-            return View("Detail", post);
+            var subCategory = db.SubCategories
+                .Where(s => s.SubCategoryID == post.SubCategory.SubCategoryID).First();
+            var posts = subCategory.Posts.OrderByDescending(s => s.PublishedTime);
+            ViewBag.PostID = id;
+            return View("Detail", posts);
         }
 
         public ActionResult FeedBack(int postID, string postTitle)
