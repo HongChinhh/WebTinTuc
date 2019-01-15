@@ -489,12 +489,14 @@ figure {
         width: 31%;
         float: left;
         line-height: 15px;
+        margin-right: 2%;
         /*margin-left: -445px;*/
     }
 
         .row9 .info_end1 .title_end1 {
             /*float: left;*/
             color: #fef9f9;
+            width: 100%;
         }
 
         .row9 .info_end1 .line2 {
