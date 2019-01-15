@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+@using WebsiteAdmission.Common
+@if (Model.Any())
+{
+    <div class="row4">
+        <div class="lienketdaihoc">
+            <div class="title_lkdh">
+                <p><b>@Model.FirstOrDefault().SubCategory.Name</b></p>
+            </div>
+            @foreach (var item in Model.OrderByDescending(x => x.PostID).Take(3))
+            {
+                <div class="new_lkdh">
+                    <img src="@(Constants.ImagesPosts.GetDescription() + item.PostID + '/' + item.CoverImage)" alt="@item.Title" class="image">
+                    <p>
+                        @item.Title
+                    </p>
+                    <a href="@Url.Action("Detail", "Page", new { id = item.PostID })">CHI TIẾT </a>
+                </div>
+            }
+
+        </div>
+
+    </div>
+    <div class="row5">
+        <img src="~/Content/images/slide_tintuc.jpg">
+    </div>
+}

@@ -1,0 +1,8 @@
+﻿@model WebsiteAdmission.Models.Post
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+@Html.Raw(Model.Body)
+

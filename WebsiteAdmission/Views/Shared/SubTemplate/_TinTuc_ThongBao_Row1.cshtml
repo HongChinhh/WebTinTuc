@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+@using WebsiteAdmission.Common
+<link href="~/Content/styles/tin_tucthongbao.css" rel="stylesheet" />
+
+@if (Model != null && Model.Count() > 0)
+{
+    int i = 0;
+    <div class="row3">
+        @foreach (var item in Model)
+        {
+            if (i++ == 6)
+            {
+                break;
+            }
+            <div class="container1">
+                <a href="@Url.Action("Detail", "Page", new { id = item.PostID })" class="clear_a">
+                    <img src="@(Constants.ImagesPosts.GetDescription() + item.PostID + '/' + item.CoverImage)" alt="No Image" class="image">
+                    <div class="topleft">@item.Title</div>
+                </a>
+                <div class="link_container1">
+                    <a> CHI TIẾT</a>
+                </div>
+            </div>
+        }
+    </div>
+}

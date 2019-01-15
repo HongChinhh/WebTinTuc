@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.SubCategory>
+@using WebsiteAdmission.Common
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+@foreach (var item in Model)
+{
+    Html.RenderPartial(Constants.SubCategory.GetDescription() + item.ViewName + ".cshtml", item.Posts.OrderByDescending(s => s.PublishedTime));
+}

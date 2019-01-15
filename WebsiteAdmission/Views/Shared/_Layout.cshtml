@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/styles/common")
+    @RenderSection("css", false)
+    <style>
+
+        footer {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Trang Chủ", "Index", "Page", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Phản hồi", "Index", "Feedbacks")</li>
+                    <li>@Html.ActionLink("Danh mục gốc", "Index", "ParentCategories")</li>
+                    <li>@Html.ActionLink("Bài viết", "Index", "Posts")</li>
+                    <li>@Html.ActionLink("Quyền", "Index", "Privileges")</li>
+                    <li>@Html.ActionLink("Slide", "Index", "SlideImages")</li>
+                    <li>@Html.ActionLink("Danh mục con", "Index", "SubCategories")</li>
+                    <li>@Html.ActionLink("Footer", "Index", "Footers")</li>
+                    <li>@Html.ActionLink("Thành viên", "Index", "Users")</li>
+                    @if (Session["user_id"] != null)
+                    {
+                        <li>@Html.ActionLink("Đăng xuất", "Logout", "Account")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-danger">@TempData["message"]</div>
+        }
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("script", required: false)
+</body>
+</html>

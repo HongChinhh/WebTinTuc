@@ -1,0 +1,35 @@
+﻿@using WebsiteAdmission.Models;
+@{
+    WebsiteAdmissionDbContext db = new WebsiteAdmissionDbContext();
+}
+
+<footer>
+    <div class="cover_row9">
+        <div class="row9">
+            @foreach (var item in db.Footers.Where(x => x.ParentId == null))
+            {
+                <div class="info_end1">
+                    <div class="title_end1">
+                        <p>@item.Name</p>
+                    </div>
+                    <div class="line2"> <hr></div>
+                    <div class="content_end1">
+                        @foreach (var c in db.Footers.Include("Post").Where(x => x.ParentId == item.Id))
+                        {
+                            if (c.Post != null)
+                            {
+                                <p>@c.Post.Title</p>
+                            }
+                            if (c.Content != null)
+                            {
+                                <p>@Html.Raw(c.Content)</p>
+                            }
+                        }
+                    </div>
+                   
+                </div>
+            }
+
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+@using WebsiteAdmission.Common
+@if (Model != null && Model.Count() > 0)
+{
+    int i = 0;
+    <div class="row5">
+        <div id="tts" class="tintuyensinh">
+            <div class="title">
+                <p><b>@Model.FirstOrDefault().SubCategory.Name</b></p>
+            </div>
+            <table>
+                @foreach (var item in Model)
+                {
+                    if (i++ == 6)
+                    {
+                        break;
+                    }
+                    <tr class="new">
+                        <td>
+                            <a href="@Url.Action("Detail", "Page", new { id = item.PostID })" class="new1 clear_a">
+                                <img src="@(Constants.ImagesPosts.GetDescription() + item.PostID + '/' + item.CoverImage)" />
+                                <p class="limit-text-28px"><b>@item.Title</b> </p><p>@item.PublishedTime</p>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="button_tinkhac">
+                <button type="submit">
+                    <a style="text-decoration: none; color: #FFF;" href="@Url.Action("Index", "Search")">Tin khác</a>
+                </button>
+            </div>
+        </div>
+    </div>
+}

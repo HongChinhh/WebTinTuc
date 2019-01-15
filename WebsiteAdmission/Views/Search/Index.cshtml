@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+@using WebsiteAdmission.Common
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    ViewBag.Title = "Kết quả tìm kiếm";
+}
+
+<link rel="stylesheet" href="~/Content/styles/khoa.css" type="text/css" />
+<div class="row3">
+    <div class="content_gioithieu">
+        @foreach (var item in Model)
+        {
+            <div class="new">
+                <div class="new_anh">
+                    <img title="@item.Title" src="@(Constants.ImagesPosts.GetDescription() + item.PostID + '/' + item.CoverImage)">
+                </div>
+                <div class="content_new">
+                    <a href="@Url.Action("Detail", "Page", new { id = item.PostID })">@item.Title</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

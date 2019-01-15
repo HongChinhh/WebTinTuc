@@ -1,0 +1,17 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+<div class="row3-left">
+    <div class="phanloaicauhoi">
+        <div class="title_phanloai">
+            <p>@Model.First().SubCategory.Name</p>
+        </div>
+        <div class="button_phanloai">
+            @{ int i = 1;}
+            @foreach (var item in Model)
+            {
+                <a href="@Url.Action("Detail", "Page", new { id = item.PostID })" 
+                   class="button @(Model.Count() == i ? "red" : "")">@item.Title</a>
+                i++;
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+@using WebsiteAdmission.Common
+
+
+<div class="row7">
+    <div class="thongtincanbiet_r6">
+        <div class="title_lkdh">
+            <p><b>@Model.FirstOrDefault().SubCategory.Name</b></p>
+        </div>
+        <div class="cover_newtt">
+            @foreach (var item in Model.OrderByDescending(x => x.PostID).Take(8))
+            {
+                <div class="new_tt">
+                    <div class="icon_last">
+                        <img src="@(Constants.ImagesPosts.GetDescription() + item.PostID + '/' + item.CoverImage)" alt="@item.Title" class="image">
+                    </div>
+                    <div class="content_icon">
+                        <a href="">@item.Title</a>
+                    </div>
+                    <div class="line_icon"> </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

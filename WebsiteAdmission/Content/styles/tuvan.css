@@ -1,0 +1,125 @@
+.row3-left {
+    width: 30%;
+    float: left;
+    height: auto;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+.row3-right {
+    width: 65%;
+    float: left;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.row3-left .phanloaicauhoi {
+    width: 100%;
+    float: left;
+}
+
+    .row3-left .phanloaicauhoi .title_phanloai p {
+        color: #ae191b;
+        font-weight: bold;
+        padding-left: 8%;
+        font-family: 'Roboto Slab';
+    }
+
+.line_phanloai {
+    border-top: 0.5px solid #ae191b;
+    width: 30%;
+    margin: auto;
+    margin-top: -2px;
+    margin-bottom: 11px;
+    padding-left: 212px;
+    float: left;
+}
+
+.row3-left .phanloaicauhoi .button_phanloai a {
+    background-color: #dedede;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: Calibri;
+    color: #070a0d;
+    overflow: hidden;
+    width: 71%;
+}
+
+.row3-left .phanloaicauhoi .button_phanloai .red {
+    background-color: #ae191b;
+    color: #ffffff;
+}
+
+.row3-right .cauhoiphobien {
+    width: 100%;
+    float: right;
+    margin-left: 30px;
+}
+
+.title_phobien {
+    width: 100%;
+    text-align: center;
+}
+
+.row3-right .cauhoiphobien .title_phobien p {
+    color: #03274B;
+    font-weight: bold;
+    font-family: 'Roboto Slab';
+}
+
+.content_phobien {
+    margin-left: 30px;
+}
+
+.row3-right .cauhoiphobien .content_phobien .panel-group .panel .panel-heading .panel-title a {
+    font-size: 12px;
+}
+
+footer {
+    clear: both;
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}

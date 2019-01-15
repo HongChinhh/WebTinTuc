@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Post>
+@using WebsiteAdmission.Common
+@if (Model != null && Model.Count() > 0)
+{
+    int i = 0;
+    <div class="row6">
+        <div class="tuyensinhdaihoc">
+            <div class="title_tsdh">
+                <p><b>@Model.FirstOrDefault().SubCategory.Name</b></p>
+            </div>
+            <div class="midle_tsdh">
+                @foreach (var item in Model)
+                {
+                    if (i++ == 2)
+                    {
+                        break;
+                    }
+                    <div class="new_tsdh">
+                        <a href="@Url.Action("Detail", "Page", new { id = item.PostID })">
+                            <img src="@(Constants.ImagesPosts.GetDescription() + item.PostID + '/' + item.CoverImage)" />
+                            <h4 style="color: black">
+                                @item.Title
+                            </h4>
+                            CHI TIẾT
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
