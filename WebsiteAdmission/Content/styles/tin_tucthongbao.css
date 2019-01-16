@@ -266,19 +266,17 @@ body {
   font-family: Calibri; }
   .row9 .info_end1 {
     width: 31%;
-    float: left;
+   
     line-height: 15px;
-    margin-left: 4%;
-    margin-top: 3%; }
+    }
     .row9 .info_end1 .title_end1 {
-      float: left;
+      
       color: #fef9f9; }
     .row9 .info_end1 .line2 {
-      float: left;
+     
       width: 50%;
-      border-color: #171111;
-      margin-left: -45%;
-      margin-top: 14%; }
+      border-color: #171111;      
+     }
     .row9 .info_end1 .content_end1 {
       float: left;
       color: #959595; }
