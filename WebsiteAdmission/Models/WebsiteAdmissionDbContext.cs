@@ -1,9 +1,6 @@
 namespace WebsiteAdmission.Models
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class WebsiteAdmissionDbContext : DbContext
     {
@@ -20,6 +17,9 @@ namespace WebsiteAdmission.Models
         public virtual DbSet<SlideImage> SlideImages { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<EnrollMark> EnrollMarks { get; set; }
+        public virtual DbSet<EnrollTarget> EnrollTargets { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -94,6 +94,16 @@ namespace WebsiteAdmission.Models
 
             modelBuilder.Entity<Footer>()
                 .HasOptional(x => x.Parent);
+
+            modelBuilder.Entity<Department>()
+                .HasMany(x => x.EnrollMarks)
+                .WithRequired(x => x.Department)
+                .HasForeignKey(x => x.DepartmentId);
+
+            modelBuilder.Entity<Department>()
+                .HasMany(x => x.EnrollTargets)
+                .WithRequired(x => x.Department)
+                .HasForeignKey(x => x.DepartmentId);
         }
     }
 }

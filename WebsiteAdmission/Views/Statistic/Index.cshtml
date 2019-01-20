@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Department>
+@{
+ ViewBag.Title = "Thông tin tuyển sinh";
+}
+
+<h3>@ViewBag.Title</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="@Url.Action("Index", "Departments")" class="btn btn-success">Quản lý khoa</a>
+        <a href="@Url.Action("Index", "EnrollMarks")" class="btn btn-success">Điểm trúng tuyển</a>
+        <a href="@Url.Action("Index", "EnrollTargets")" class="btn btn-success">Chỉ tiêu tuyển sinh</a>
+    </div>
+</div>
+<br />
+@Html.Partial("_EnrollTargets", Model)
+@Html.Partial("_EnrollMarks", Model)
+
+@section script {
+    <script>
+        $(document).ready(function () {
+            year_td = $("td.year:last");
+            if (year_td) {
+                $(".predict-year").text((parseInt(year_td.text()) + 1) + " (dự đoán)");
+            }
+        })
+    </script>
+}

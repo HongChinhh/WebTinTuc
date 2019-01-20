@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebsiteAdmission.Models.Department>
+@{ int i = 0;}
+<table class="table table-bordered">
+    <tr>
+        <th class="text-center">Ngành</th>
+        @if (Model.Any())
+        {
+            <th class="text-center" colspan="@(Model.First().EnrollTargets.Count + 1)">
+                Chỉ tiêu tuyển sinh
+            </th>
+        }
+        else
+        {
+            <th class="text-center" colspan="1">
+                Chỉ tiêu tuyển sinh
+            </th>
+        }
+    </tr>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            var targets = item.EnrollTargets.Select(x => x.Target).ToList();
+            var predictTargets = WebsiteAdmission.Common.StatisticHelper.Holt(targets);
+            if (i == 0)
+            {
+                <tr>
+                    <td></td>
+                    @foreach (var year in item.EnrollTargets)
+                    {
+                        <td class="year">@year.Year</td>
+                    }
+                    <td class="predict-year"></td>
+                </tr>
+            }
+            <tr>
+                <td>@item.Name</td>
+                @foreach (var item2 in item.EnrollTargets)
+                {
+                    <td>@item2.Target</td>
+                }
+                @if (predictTargets.Any())
+                {
+                    <td>@Math.Round(predictTargets.Last().FT, 2)</td>
+                }
+                else
+                {
+                    <td>Tạm thời chưa dự đoán được</td>
+                }
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
+
+<script>
+
+</script>
