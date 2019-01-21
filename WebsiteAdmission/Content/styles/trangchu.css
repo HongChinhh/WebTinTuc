@@ -3,9 +3,10 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: auto;
     padding: 0;
     font-family: 'Roboto Slab';
+  
 }
 
 figure {
@@ -603,4 +604,15 @@ figure {
 
 footer {
     clear: both;
+}
+
+table {
+    margin: auto;
+    width:1000px;
+}
+
+.dubao {
+    width: 1000px;
+    margin: auto;
+    position: relative;
 }
