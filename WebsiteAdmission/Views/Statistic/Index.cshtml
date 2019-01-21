@@ -1,11 +1,13 @@
-﻿@model IEnumerable<WebsiteAdmission.Models.Department>
+﻿<link rel="stylesheet" href="~/Content/styles/nhungdieukhacbiet.css" type="text/css" />
+@model IEnumerable<WebsiteAdmission.Models.Department>
 @{
- ViewBag.Title = "Thông tin tuyển sinh";
+    Layout = "/Views/Shared/_ClientLayout.cshtml";
+    ViewBag.Title = "Thông tin tuyển sinh";
 }
 
 <h3>@ViewBag.Title</h3>
 
-<div class="row">
+<div class="row" >
     <div class="col-md-12">
         <a href="@Url.Action("Index", "Departments")" class="btn btn-success">Quản lý khoa</a>
         <a href="@Url.Action("Index", "EnrollMarks")" class="btn btn-success">Điểm trúng tuyển</a>

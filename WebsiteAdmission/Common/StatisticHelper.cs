@@ -15,6 +15,7 @@ namespace WebsiteAdmission.Common
             var items = new List<HoltItem>();
             if (predictItems.Count <= 0) return items;
 
+            // Tang o day
             for (int i = 0; i <= predictItems.Count; i++)
             {
                 if (i == 0)

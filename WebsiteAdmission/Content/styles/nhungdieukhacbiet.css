@@ -8,15 +8,19 @@ html {
   font-weight: normal;
   font-style: normal; }
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto Slab'; }
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Slab';
+    
+}
 
 body:before {
   content: '';
   height: 100%;
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;
+
+}
 
 .cover_row1_row2 {
   height: 209px; }
@@ -137,7 +141,6 @@ body:before {
     .row3 .tin-moi .content-tin-moi .title-tin {
       font-size: 10px;
       padding-bottom: 1%; }
-
 .row9 {
   width: 1000px;
   margin: auto;

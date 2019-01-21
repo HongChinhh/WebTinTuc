@@ -5,7 +5,7 @@ using WebsiteAdmission.Models;
 
 namespace WebsiteAdmission.Controllers
 {
-    public class StatisticController : BaseAdminController
+    public class StatisticController : Controller
     {
         private readonly WebsiteAdmissionDbContext db;
         public StatisticController()
